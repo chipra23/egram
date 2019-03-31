@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+<head>
+
+   <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content = "width=device-width ,initial-scale=1">
+		<title> {%block title%}{%endblock%} </title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>$('.carousel').carousel()</script>
+
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="{% static "css/home.css"%}">
+
+{%block css%}
+    {%endblock%}
+
+
+
+</head>
+<body>
+
+ <div id="header-1">
+
+			<ul class="list-inline">
+				<li> India's fastest e-gram system  </li>
+				<li class="header-1-link"> <a href="#"  > Help Centre </a> </li>
+				<li class="header-1-link"> <a href="{%url 'add'%}"  > Sell Items </a> </li>
+
+			</ul>
+		</div>
+
+		<div id="header2">
+
+			<ul class="list-inline">
+				<li> <a href="{% url 'home' %}"> <img src="{%static "main/emandi.png"%}" width="100" height="34" alt="e-gram" > </a> </li>
+				<li> <a href="#"> <span class="glyphicon glyphicon-th-list" </span> </a> </li>
+				<li id="search-bar">  <input type="text" class="form-control" placeholder="Search Products" size="120">
+					<a href="#"> <span class="glyphicon glyphicon-search"> </span> </a>
+				</li>
+				<li id="cart-login"> <a href="{%url 'cart'%}" > Cart <span class = "glyphicon glyphicon-shopping-cart"> </span> </a> </li>
+				<li id="cart-login">
+
+                 {%if user.is_authenticated %}
+                  <a href="{%url 'logout'%}">Logout<span class="glyphicon glyphicon-off"></span></a>
+				  <li style="font-color:rgb(0,0,78); font-size:20px;">Hi! {{user.get_username}}  </li>
+
+                 {%else%}
+
+				   <a href="{% url 'login'%}" style="width:auto;">Login</a>/
+				   <a href="{% url 'signu'%}" style="width:auto;">Sign Up</a></li>
+
+				 {%endif%}
+				<li> <a href="{% url 'acc'%}" style="width:auto; font-size:20px;">My Account</a> <span class = "glyphicon glyphicon-user"> </span></li>
+			</ul>
+		</div>
+
+
+{% block carousal%}
+{%endblock%}
+ {%block products%}
+ {%endblock%}
+ <footer>
+	<!-- FOOTER -->
+		<hr>
+		<div class="footer">
+
+			<h3 class="footerAboutHeading"> About e-gram </h3>
+			 <div class="footer-text">
+				We at E-gram believe in the future of agriculture and homegrown artists , with a faith born not of words but of deeds.
+				Hence, we designed an online portal for farmers and artisans to sell their products at reasonable rates. So, don't wait
+				, just hurry and grasp this wonderful opportunity of being a part of this wonderful self-sufficient family!
+			</div>
+			<div class="footer-text">
+				Contact us: <a href="#" style="color:white" >prachihooda23@gmail.com </a>
+			</div>
+
+
+		</div>
+
+		<hr>
+
+		<div class="footer-social" align="center">
+			<ul class="list-inline">
+					<li><a href="#" class="fa fa-facebook"></a></li>
+					<li><a href="#" class="fa fa-twitter"> </a></li>
+					<li><a href="#" class="fa fa-google"> </a></li>
+					<li><a href="#" class="fa fa-instagram"> </a></li>
+			</ul>
+
+		</div>
+
+		<!--Copyright-->
+		<div class="footer-copyright py-3 text-center">
+			© 2018 Copyright:
+			<a href="{% url 'home' %}"> e-gram.com </a>
+		</div>
+		<!--/Copyright-->
+
+ </footer>
+</body>
+
+
+</html>
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+<title> Sign Up </title>
+<style>
+ body{
+  background-image: url("Agricultural-India.jpg");
+  background-repeat:no-repeat;
+  margin-left:30px;
+ }
+  input{
+    margin-left:150px; 
+    border-radius:5px;
+    width:40%;
+    box-sizing:border-box;
+    font-size:20px;
+  }
+
+  button{
+    font-size:30px;
+    background-color:rgba(0,0,50,1);
+    color:white;
+    text-align:center;
+    margin-left:50px;
+    margin-top: 10px;
+  }
+  h4{
+    margin-left: 30px;
+  }
+
+</style>
+</head>
+<body>
+
+  <h1 style ='color:rgb(0,0,64); font-size:60px; margin-left:100px; '> SignUp</h1>
+  <form method="post" style='margin-left :30px;'>
+     {%csrf_token%}
+     {%for field in form%}
+     <p style=" font-size:20px; margin-left:30px;">
+      {{field.label_tag}}&nbsp;&nbsp;{{field}}
+      {%if field.help_text%}
+      <small style="color:white">{{field.help_text}}</small>
+      {%endif%}
+      {%for error in field.errors%}
+       <p style="color:red">{{error}}</p>
+      {%endfor%}
+     </p>
+       {%endfor%}
+       <button type="submit"> Sign up </button>
+    </form>
+  <h4 >Already have an account?<a href="{% url 'login' %}">Login</a></h4>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%load static%}
+
+<html lang="en">
+	
+<head>
+
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content = "width=device-width ,initial-scale=1">
+	<title> Manage Account </title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script>$('.carousel').carousel()</script>
+		
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static "css/home.css"%}">
+	</head>
+	<body>
+	
+	<h1>My Products</h1>
+		 <div class="allproducts" style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-gap:30px;">
+      	{% for product_inst in productor %}
+      	<div class="product" style=" padding:10px; border:1px solid rgb(52,180,116); position:relative;">
+      		<img src="{{product_inst.image.url}}" width=320px height=250px/>
+      		<h2>{{product_inst.product}}</h2>
+      		<p style="font-size:20px;"><b>&#x20b9; {{product_inst.rate}}</b></p>
+      		<p style="font-color:grey;font-size:20px;">{{product_inst.snippet}}</p>
+			<button >Delete</button>
+      	</div>
+      	{%endfor%}
+      </div>

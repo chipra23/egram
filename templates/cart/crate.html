@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crate</title>
+</head>
+<body>
+
+     <h1>Cart</h1>
+
+        <div class="allproducts" style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-gap:30px;">
+      	{% for product_inst in car.product.all %}
+      	<div class="product" style=" padding:10px; border:1px solid rgb(52,180,116); position:relative;">
+            <a href="{%url 'detail' id=product_inst.pk%}"><img src="{{product_inst.image.url}}"></a>
+      		<h2><a href="{%url 'detail' id=product_inst.pk%}">{{product_inst.product}}</a></h2>
+      		<p style="font-size:20px;"><b>&#x20b9; {{product_inst.rate}}</b></p>
+      		<p style="font-color:grey;font-size:20px;">{{product_inst.snippet}}</p>
+      		<p>{{product_inst.seller}}</p>
+                <button style="color:'green'">BUY</button>
+      	</div>
+      	{%endfor%}
+
+
+</body>
+</html
